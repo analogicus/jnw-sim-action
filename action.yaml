@@ -7,8 +7,6 @@ branding:
 runs:
     using: 'composite'
     steps:
-      - name: Set up environment variables
-        shell: bash
       - name: Checkout tech
         shell: bash
         run: cd ../ && git clone https://github.com/wulffern/tech_sky130A.git
