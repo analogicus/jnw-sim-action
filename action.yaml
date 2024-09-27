@@ -29,7 +29,4 @@ runs:
           export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/eda/lib
           export PATH=/opt/eda/bin:$HOME/.local/bin:$PATH
           mkdir _results
-          foreach f in $INPUT_SIM_FOLDERS; do
-              cd sim/$f; make test
-              cp sim/$f/results _results/$f
-              done
+          foreach f in $INPUT_SIM_FOLDERS; do  cd sim/$f && make test;  cp sim/$f/results _results/$f;  done
