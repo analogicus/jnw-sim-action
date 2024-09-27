@@ -4,8 +4,6 @@ branding:
   color: purple
   icon: layers
 
-inputs:
-
 runs:
     using: 'composite'
     steps:
