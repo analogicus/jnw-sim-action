@@ -7,7 +7,7 @@ branding:
 inputs:
 
 runs:
-    runs-on: 'composite'
+    using: 'composite'
     container:
       image: wulffern/aicex:24.04_0.1.4
       options: --user root
