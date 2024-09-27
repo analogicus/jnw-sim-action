@@ -4,12 +4,16 @@ branding:
   color: purple
   icon: layers
 
+input:
+  sim-folders:
+    description: 'Folders to run simulations in'
+    required: true
 runs:
     using: 'composite'
     steps:
       - name: Checkout tech
         shell: bash
-        run: cd ../ && git clone https://github.com/wulffern/tech_sky130A.git
+        run: cd ../ && git clone https://github.com/wulffern/tech_sky130A.git && git clone https://github.com/wulffern/tech_sky130B.git
       - name: Install cicsim
         shell: bash
         run:  python3 -m pip install cicsim
@@ -24,4 +28,8 @@ runs:
           export CIC_RANDOM_PLOTNAME=1
           export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/eda/lib
           export PATH=/opt/eda/bin:$HOME/.local/bin:$PATH
-          make all
+          mkdir _results
+          foreach f in $INPUT_SIM_FOLDERS; do
+              cd sim/$f; make test
+              cp sim/$f/results _results/$f
+              done
