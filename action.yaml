@@ -8,9 +8,6 @@ inputs:
 
 runs:
     using: 'composite'
-    container:
-      image: wulffern/aicex:24.04_0.1.4
-      options: --user root
     steps:
       - name: Checkout tech
         run: cd ../ && git clone https://github.com/wulffern/tech_sky130A.git
